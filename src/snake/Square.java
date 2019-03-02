@@ -39,11 +39,11 @@ public class Square {
         this.y += dy;
     }
 
-    public Rectangle getBound() {
+    private Rectangle getBound() {
         return new Rectangle(this.x, this.y, size, size);
     }
 
-    public boolean isCollision(Square o) {
+    public boolean colliding(Square o) {
         if (o == this) {
             return false;
         }
