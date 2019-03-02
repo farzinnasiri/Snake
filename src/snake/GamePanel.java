@@ -217,7 +217,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
         y = randomPosition();
         this.food.setPosition(x, y);
         for (Square e : snake) {
-            if(food.isCollision(e) && !food.isCollision(head)){
+            if(food.colliding(e) && !food.colliding(head)){
                 setFood();
             }
 
@@ -384,7 +384,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
                 head.move(dx, dy);
             }
             for (Square e : snake) {
-                if (e.isCollision(head)) {
+                if (e.colliding(head)) {
                     losing();
                     break;
                 }
@@ -393,7 +393,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
             }
             if(wallOn){
                 for (Square e : wall) {
-                    if(e.isCollision(head)){
+                    if(e.colliding(head)){
                         losing();
                         break;
                     }
@@ -402,7 +402,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
             }
 
 
-            if (food.isCollision((head))) {
+            if (food.colliding((head))) {
                 eatingClip.start();
                 eatingClip.setFramePosition(0);
                 if (extraPoint) {
